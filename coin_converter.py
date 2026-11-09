@@ -8,28 +8,44 @@ CENTS_PER_QUARTER = 25 # a quarter is 25 cents
 CENTS_PER_DIME = 10    # a dime is 10 cents
 CENTS_PER_NICKEL = 5   # a nickel is 5 cents
 
-# The original program calculated the value of some coins.
+def is_valid(action):
+    if (action.strip().lower() == "y" 
+        or action.strip().lower() == "n"):
+        return True
+    else:
+        return False
 
+# The original program calculated the value of some coins.
+while True:
 # get input
-print('We will convert coins to cents.')
-quarters = int(input('How many quarters? '))
-dimes = int(input('How many dimes? '))
-nickels = int(input('How many nickels? '))
-pennies = int(input('How many pennies? '))
+      print('We will convert coins to cents.')
+      quarters = int(input('How many quarters? '))
+      dimes = int(input('How many dimes? '))
+      nickels = int(input('How many nickels? '))
+      pennies = int(input('How many pennies? '))
 
 # process the input,
 # calculate the total value, in cents,
 # of the coins input by the user.
-cents = CENTS_PER_QUARTER * quarters \
-      + CENTS_PER_DIME * dimes \
-      + CENTS_PER_NICKEL * nickels \
-      + pennies
+      cents = CENTS_PER_QUARTER * quarters \
+            + CENTS_PER_DIME * dimes \
+            + CENTS_PER_NICKEL * nickels \
+            + pennies
 
 # display the original coin quantities
 # and the calculated value.
-print( quarters, 'quarters',
+      print( quarters, 'quarters',
        dimes, 'dimes',
        nickels, 'nickels',
        pennies, 'pennies',
        'is', cents, 'cents.')
+
+      while not is_valid(action := input("Do you want to convert more coins? (Enter y for yes): ")):
+           print("Please enter y or n.")
+
+      if (action.strip().lower() == "n"):
+            break
+
+      
+
 
